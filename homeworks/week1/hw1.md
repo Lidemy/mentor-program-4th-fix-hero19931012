@@ -24,9 +24,6 @@
     ```bash=
     git add . # 將所有變更加入暫存
     git commit -m "week1 finished"
-
-    # or
-    git commit -am "week1 finished"
     ```
 
 5. 把 week1 push 到遠端，也就是 github 上面的 origin repo
