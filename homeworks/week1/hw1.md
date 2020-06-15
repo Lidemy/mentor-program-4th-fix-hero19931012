@@ -52,16 +52,22 @@
 12. 助教批改完成後會在 pull request 中幫你 merge
     ![merge](https://i.imgur.com/yu0lN8U.png)
 
-13. 再回到 local，把已經 merge 的 repo pull 到 local 上
+13. 再回到 local，先切到 master
+
+    ```bash=
+    git checkout master
+    ```
+
+14. 把已經 merge 的 repo pull 到 local 上
 
     ```bash=
     git pull origin master # 把遠端的 master 同步到電腦
     ```
 
-14. 刪除 week1 分支
+15. 刪除 week1 分支
 
     ```bash=
     git branch -d week1
     ```
 
-15. 大功告成！
+16. 大功告成！
