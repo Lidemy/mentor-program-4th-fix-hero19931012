@@ -11,7 +11,6 @@ rl.on('line', (line) => { // 每輸入一行資料就 push 進 lines
 
 function isPrime(num) {
   if (num === 1) {
-    // eslint-disable-next-line no-return-assign
     return 'Composite';
   }
   // eslint-disable-next-line no-plusplus
@@ -20,7 +19,6 @@ function isPrime(num) {
       return 'Composite';
     }
   }
-  // eslint-disable-next-line no-return-assign
   return 'Prime';
 }
 

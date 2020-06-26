@@ -27,13 +27,10 @@ function whoIsBigger(A, B, C) {
   if (A.length !== B.length) {
     return A.length > B.length ? 'A' : 'B';
   }
-  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < A.length; i++) {
-    if (A[i] === B[i]) {
-      // eslint-disable-next-line no-continue
-      continue;
+    if (A[i] !== B[i]) {
+      return A[i] > B[i] ? 'A' : 'B';
     }
-    return A[i] > B[i] ? 'A' : 'B';
   }
 }
 

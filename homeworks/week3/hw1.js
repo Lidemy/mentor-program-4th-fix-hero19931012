@@ -12,7 +12,6 @@ rl.on('line', (line) => { // 每輸入一行資料就 push 進 lines
 
 function solve(input) {
   let star = '';
-  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < Number(input[0]); i++) {
     star += '*';
     console.log(star);

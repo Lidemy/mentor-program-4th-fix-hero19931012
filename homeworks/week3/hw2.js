@@ -12,7 +12,6 @@ rl.on('line', (line) => { // 每輸入一行資料就 push 進 lines
 function isNar(num) {
   const N = num.toString().length;
   let sum = 0;
-  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < N; i++) {
     sum += Number(num.toString()[i]) ** N;
   }
@@ -24,7 +23,6 @@ function isNar(num) {
 
 function solve(input) {
   const [from, to] = input[0].split(' ').map(Number);
-  // eslint-disable-next-line no-plusplus
   for (let i = from; i <= to; i++) {
     if (isNar(i)) {
       console.log(i);

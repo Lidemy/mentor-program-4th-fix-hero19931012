@@ -21,6 +21,7 @@ module.exports = {
   ],
   rules: {
     "no-console": "off",
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    'no-plusplus': [2, { allowForLoopAfterthoughts: true }],
   },
 };
