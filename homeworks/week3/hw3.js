@@ -10,15 +10,9 @@ rl.on('line', (line) => { // 每輸入一行資料就 push 進 lines
 });
 
 function isPrime(num) {
-  if (!isPrime.answer) {
-    isPrime.answer = {};
-  }
-  if (isPrime.answer[num] !== undefined) {
-    return isPrime.answer[num];
-  }
   if (num === 1) {
     // eslint-disable-next-line no-return-assign
-    return isPrime.answer[num] = 'Composite';
+    return 'Composite';
   }
   // eslint-disable-next-line no-plusplus
   for (let i = 2; i < num; i++) {
@@ -27,7 +21,7 @@ function isPrime(num) {
     }
   }
   // eslint-disable-next-line no-return-assign
-  return isPrime.answer[num] = 'Prime';
+  return 'Prime';
 }
 
 function solve(input) {
