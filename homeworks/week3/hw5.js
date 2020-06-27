@@ -1,4 +1,3 @@
-// 聯誼順序比大小
 const readline = require('readline');
 
 const lines = [];
@@ -10,39 +9,33 @@ rl.on('line', (line) => { // 每輸入一行資料就 push 進 lines
   lines.push(line);
 });
 
-// eslint-disable-next-line consistent-return
 function whoIsBigger(A, B, C) {
-  if (A === B) {
+  if (C === '1') {
+    if (A.length > B.length) { return 'A'; }
+    if (A.length < B.length) { return 'B'; }
+    for (let i = 0; i < A.length; i++) {
+      if (A[i] > B[i]) { return 'A'; }
+      if (A[i] < B[i]) { return 'B'; }
+    }
     return 'DRAW';
   }
 
-  if (C === '-1') {
-    const temp = A;
-    // eslint-disable-next-line no-param-reassign
-    A = B;
-    // eslint-disable-next-line no-param-reassign
-    B = temp;
-  }
-
-  if (A.length !== B.length) {
-    return A.length > B.length ? 'A' : 'B';
-  }
+  if (A.length > B.length) { return 'B'; }
+  if (A.length < B.length) { return 'A'; }
   for (let i = 0; i < A.length; i++) {
-    if (A[i] !== B[i]) {
-      return A[i] > B[i] ? 'A' : 'B';
-    }
+    if (A[i] > B[i]) { return 'B'; }
+    if (A[i] < B[i]) { return 'A'; }
   }
+  return 'DRAW';
 }
 
-function solve(input) {
-  // eslint-disable-next-line no-plusplus
+function solve(input) { // 取得 input
   for (let i = 1; i < input.length; i++) {
     const [A, B, C] = input[i].split(' ');
-    // console.log(`A = ${A}, B = ${B}, C = ${C}`);
     console.log(whoIsBigger(A, B, C));
   }
 }
 
-rl.on('close', () => {
+rl.on('close', () => { // 當輸入結束，就執行 function solve
   solve(lines);
 });

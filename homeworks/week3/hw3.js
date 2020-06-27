@@ -13,7 +13,6 @@ function isPrime(num) {
   if (num === 1) {
     return 'Composite';
   }
-  // eslint-disable-next-line no-plusplus
   for (let i = 2; i < num; i++) {
     if (num % i === 0) {
       return 'Composite';
@@ -23,7 +22,6 @@ function isPrime(num) {
 }
 
 function solve(input) {
-  // eslint-disable-next-line no-plusplus
   for (let i = 1; i < input.length; i++) {
     console.log(isPrime(Number(input[i])));
   }

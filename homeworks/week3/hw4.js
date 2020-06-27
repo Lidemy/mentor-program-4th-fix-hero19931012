@@ -13,7 +13,6 @@ rl.on('line', (line) => { // 每輸入一行資料就 push 進 lines
 function solve(input) {
   const str = input[0];
   let strRev = '';
-  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < str.length; i++) {
     strRev = str[i] + strRev;
   }
