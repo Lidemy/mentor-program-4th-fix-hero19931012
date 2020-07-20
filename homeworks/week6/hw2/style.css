@@ -1,0 +1,123 @@
+body {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+main {
+  margin: 0px 20px 0px 20px;
+}
+.form__body {
+  max-width: 645px;
+  box-shadow: 1.8px 2.4px 5px 0 rgba(0, 0, 0, 0.3);
+  background-color: #ffffff;
+  border-top: #fad312 solid 8px;
+  margin: 121px auto 64px auto;
+}
+
+.wrapper {
+  padding: 54px 42px 35px 42px;
+  margin: 0px 20px 0px 20px;
+}
+
+.form__title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 35px;
+}
+
+.form__info {
+  font-size: 14px;
+  margin-bottom: 11px;
+}
+
+.form__info:last-child {
+  margin-bottom: 22px;
+}
+
+.notice {
+  font-size: 16px;
+  color: #e74149;
+  margin-bottom: 55px;
+}
+
+.question__area {
+  margin-bottom: 50px;
+}
+
+.question__area label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 23px;
+}
+
+.question {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.question:not(.other)::after {
+  content: "*";
+  color: #e74149;
+  font-size: 20px;
+}
+
+.other {
+  margin-bottom: 12px;
+}
+
+.question__info {
+  margin: 0px 0px 24px 0px;
+  font-size: 14px;
+}
+
+.input__area {
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.input__area input {
+  border: #d0d0d0 solid 1px;
+  width: 100%;
+  padding: 8px;
+}
+
+.input__area .blank{
+  width: 100%;
+}
+
+
+
+.button__submit {
+  background: #fad312;
+  border-radius: 3px;
+  height: 40px;
+  width: 92px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 21px;
+}
+
+.warning {
+  font-size: 14px;
+  margin-bottom: 0px;
+}
+
+footer {
+  border-top: 2px solid #fad312;
+  background: #000;
+}
+
+footer .copyright {
+  margin: 0px;
+  font-size: 13px;
+  color: #999999;
+  text-align: center;
+  padding: 25px 10px;
+}
+
+@media(max-width: 786px) {
+  .input__area .blank{
+    width: 0%;
+  }
+  /* 讓行動裝置瀏覽時 input 是左右佔滿 */
+}

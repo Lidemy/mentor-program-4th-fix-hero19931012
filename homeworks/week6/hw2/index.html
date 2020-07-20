@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新拖延運動報名表單</title>
+  <link rel="stylesheet" href="./normalize.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <main>
+    <div class="form__body">
+      <div class="wrapper">
+        <h1 class="form__title">新拖延運動報名表單</h1>
+        <h4 class="form__info">活動日期：2020/12/10 ~ 2020/12/11</h4>
+        <h4 class="form__info">活動地點：台北市大安區新生南路二段1號</h4>
+        <h4 class="notice">*必填</h4>
+        <div class="question__area">
+          <h3 class="question">暱稱 </h3>
+          <div class="input__area">
+            <input name="naickname" placeholder="您的回答" type="text">
+            <div class="blank"></div>
+          </div>
+        </div>
+        <div class="question__area">
+          <h3 class="question">電子郵件 </h3>
+          <div class="input__area">
+            <input name="email" placeholder="您的電子郵件" type="email">
+            <div class="blank"></div>
+          </div>
+        </div>
+        <div class="question__area">
+          <h3 class="question">手機號碼 </h3>
+          <div class="input__area">
+            <input name="phone" placeholder="您的手機號碼" type="tel">
+            <div class="blank"></div>
+          </div>
+        </div>
+        <div class="question__area">
+          <h3 class="question">報名類型 </h3>
+          <label for="one">
+            <input type="radio" id="one" name="option" value="" />
+            躺在床上用想像力實作
+          </label>
+          <label for="two">
+            <input type="radio" id="two" name="option" value="的" />
+            趴在地上滑手機找現成的
+          </label>
+        </div>
+        <div class="question__area">
+          <h3 class="question">怎麼知道這個活動的？ </h3>
+          <div class="input__area">
+            <input name="source" placeholder="您的回答" type="text">
+            <div class="blank"></div>
+          </div>
+        </div>
+        <div class="question__area">
+          <h3 class="question other">其他</h3>
+          <h4 class="question__info">對活動的一些建議</h4>
+          <div class="input__area">
+            <input name="other" placeholder="您的回答" type="text">
+            <div class="blank"></div>
+          </div>
+        </div>
+        <div class="button__submit">提交</div>
+        <h4 class="warning">請勿透過表單送出您的密碼。</h4>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <h3 class="copyright">© 2020 © Copyright. All rights Reserved.</h3>
+  </footer>
+</body>
+
+</html>
