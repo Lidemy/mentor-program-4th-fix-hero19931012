@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+
+  <style>
+    * {
+      color: #369096;
+      position: relative;
+    }
+
+    .wrapper {
+      margin: 0 20px;
+    }
+
+    .todoList__body {
+      margin: 50px auto;
+      min-height: 600px;
+      max-width: 600px;
+      padding: 20px;
+      background: #c7e8eb;
+      box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .title {
+      padding: 20px 40px;
+      text-align: center;
+      font-size: 36px;
+      font-weight: 900;
+    }
+
+    .input__section {
+      padding: 20px 25px 20px 20px;
+    }
+
+    .input__section input {
+      border: none;
+      background: rgba(0, 0, 0, 0);
+      width: 100%;
+      height: 40px;
+      line-height: 30px;
+      border-bottom: 2px solid #369096;
+      font-size: 24px;
+
+    }
+
+    .input__section input::placeholder {
+      color: #369096;
+      opacity: 0.5;
+    }
+
+    .input__section input:focus {
+      outline: none;
+      /* input:focus 預設是 outline 不是 border */
+    }
+
+    .input__section .add__item {
+      position: absolute;
+      width: 70px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 10px;
+      top: 28px;
+      right: 21px;
+      text-align: center;
+      color: #EEE;
+      background: #369096;
+      cursor: pointer;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      /* margin-bottom: 10px; */
+      padding: 10px 22px;
+      font-size: 16px;
+      transition: background 0.1s;
+    }
+
+    .item:hover {
+      background: white;
+      transition: 0.2s;
+    }
+
+    .item .item__content {
+      margin: 0px 20px;
+      width: 100%;
+    }
+
+    .item label.check {
+      position: relative;
+      border: none;
+    }
+
+    .item label.check input[type=checkbox] {
+      cursor: pointer;
+      opacity: 0;
+    }
+
+    .item label.check span {
+      position: absolute;
+      right: 0px;
+      width: 22px;
+      height: 22px;
+      border: solid #369096 3px;
+      border-radius: 3px;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+
+    .item label.check input[type=checkbox]:checked~span {
+      opacity: 0.5;
+    }
+
+    .item label.check input[type=checkbox]:checked~.checkbox__checked {
+      position: absolute;
+      top: -5px;
+      left: -3px;
+      width: 25px;
+      height: 17px;
+      border: none;
+      border-radius: 0px;
+      border-left: #369096 solid 3px;
+      border-bottom: #369096 solid 3px;
+      transform: rotate(-45deg);
+    }
+
+    .completed * {
+      opacity: 0.5;
+    }
+
+    .completed *:not(.delete) {
+      opacity: 0.5;
+      text-decoration-line: line-through;
+    }
+
+    .item .delete {
+      cursor: pointer;
+      font-weight: 900;
+    }
+
+    .item .delete:hover::after {
+      transition: all 0.5s;
+      opacity: 1;
+    }
+
+    .item .delete::after {
+      position: absolute;
+      content: 'Delete';
+      width: 70px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 10px;
+      top: -35px;
+      left: -30px;
+      text-align: center;
+      color: #EEE;
+      background: #369096;
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="todoList__body">
+      <nav class="title">
+        Todo List
+      </nav>
+      <div class="input__section">
+        <input type="text" placeholder="input here ...">
+        <div class="add__item">Add</div>
+      </div>
+
+      <div class="item__list">
+
+        <div class="item">
+          <label for="1" class="check">
+            <input id="1" type="checkbox">
+            <span class="checkbox"></span>
+            <span class="checkbox__checked"></span>
+          </label>
+          <h2 class="item__content">
+            Finish [MTR04] hw
+          </h2>
+          <span class="delete">X</sapn>
+        </div>
+
+        <div class="item">
+          <label for="2" class="check">
+            <input id="2" type="checkbox">
+            <span class="checkbox"></span>
+            <span class="checkbox__checked"></span>
+          </label>
+          <h2 class="item__content">
+            Workout
+          </h2>
+          <span class="delete">X</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="./todo.js"></script>
+</body>
+
+</html>
