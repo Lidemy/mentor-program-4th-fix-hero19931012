@@ -1,0 +1,249 @@
+.body {
+  padding: 0px;
+}
+
+.navbar {
+  box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+}
+
+.navbar .wrapper {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.navbar__site-name {
+  color: #489846;
+  font-size: 36px;
+  white-space: nowrap;
+  padding: 30px 20px;
+}
+
+.navbar__list {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  font-size: 18px;
+}
+
+.navbar__list .break {
+  display: none;
+}
+
+.navbar__list li {
+  margin-left: 12px;
+  border-radius: 8px;
+  transition: background 0.1s;
+}
+
+.navbar__list li:hover, .navbar__list li.active {
+  background-color: #ff7286;
+  cursor: pointer;
+}
+
+.navbar__list li.active a, .navbar__list li:hover a {
+  color: white;
+}
+
+.navbar__list li a {
+  display: block;
+  padding: 12px 24px;
+  text-decoration: none;
+  color: black;
+  white-space: none;
+}
+
+.wrapper {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.section__title {
+  /* 所有大標題 */
+  display: inline-block;
+  margin: 0px auto 40px auto;
+  border-left: 15px #a3dea2 solid;
+  padding-left: 16px;
+  font-size: 36px;
+}
+
+.footer {
+  background-color: #e8efee;
+  margin-top: 43px;
+}
+
+.footer .wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 44px;
+  margin-bottom: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.footer .info {
+  font-size: 14px;
+  color: #484848;
+  margin-right: 20px;
+}
+
+.footer .info p {
+  margin: 0px;
+}
+
+.footer .info p+p {
+  margin-top: 16px;
+}
+
+.footer .logo .logo__text {
+  color: #489846;
+  font-size: 36px;
+  margin: 0px;
+}
+
+.footer .logo .media {
+  right: 106px;
+  font-size: 14px;
+  color: #484848;
+  margin: 0px;
+}
+
+.footer .copyright__info {
+  font-size: 16px;
+  text-align: center;
+  background-color: #35564b;
+  margin: 0px;
+  color: #ffffff;
+  padding: 12px;
+}
+
+/******* FAQ ***************/
+
+.title {
+  text-align: center;
+  padding: 75px 0px 25px 0px;
+}
+
+.wrapper__FAQ {
+  max-width: 810px;
+  margin: 0px auto;
+}
+
+.question__area {
+  border-bottom: solid 1px #70b282;
+  margin: 0 20px;;
+  padding: 0 17px;
+  cursor: pointer;
+}
+
+.question__area .top {
+  display: flex;
+  align-items: flex-start;
+
+}
+
+.question__area .top .order {
+  display: inline-block;
+  padding: 28px 0px 30px 10px;
+  letter-spacing: 0.22px;
+  text-align: left;
+  color: #70b282;
+  font-size: 24px;
+}
+
+.question__area .top .question {
+  display: inline-block;
+  padding: 30px 0px 30px 20px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.question__area .answer {
+  margin: 0px;
+  padding-left: 58px;
+  max-height: 300px;
+  font-size: 16px;
+  line-height: 30px;
+  letter-spacing: 0.14px;
+  overflow: hidden;
+  transition: all 0.5s;
+  /* 因為 trasition 必須有值的轉換，如 height 0 <--> 100，但高度不偏好寫死 */
+  /* 可以用 max-heigth 來取代，把 max-heigth 設成一個比較大的數字，就會依內容多寡適應 */
+}
+
+.question__area .answer__hide {
+  opacity: 0;
+  max-height: 0;
+}
+ /* 設定隱藏的 class */
+
+.question__area p {
+  margin: 0 0 45px 0;
+}
+
+/******* 以下設定 RWD ******/
+
+@media(max-width: 980px) {
+  .section__comments .comments {
+    margin-top: 0px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .section__comments .comments .comment {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 80px;
+  }
+}
+
+@media(max-width: 768px) {
+  .navbar {
+    margin: 0px;
+    padding: 0px 0px;
+  }
+  .navbar .wrapper {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .navbar .wrapper .navbar__site-name {
+    padding: 10px 0px;
+  }
+  .navbar__list {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+  .navbar__list li {
+    flex: 1;
+    margin-left: 0px;
+    border-radius: 0px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .buttons .button {
+    margin: 0px;
+  }
+  .buttons .button__right {
+    margin-top: 12px;
+  }
+  .section__photos .photos {
+    flex-direction: column;
+  }
+  .footer .wrapper {
+    flex-direction: column-reverse;
+  }
+  .footer .wrapper .logo {
+    margin-bottom: 40px;
+  }
+}

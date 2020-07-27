@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新拖延運動報名表單</title>
+  <link rel="stylesheet" href="./normalize.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <main>
+    <div class="form__body">
+      <form class="wrapper">
+        <h1 class="form__title">新拖延運動報名表單</h1>
+        <h4 class="form__info">活動日期：2020/12/10 ~ 2020/12/11</h4>
+        <h4 class="form__info">活動地點：台北市大安區新生南路二段1號</h4>
+        <h4 class="notice">*必填</h4>
+
+        <div class="question__area required">
+          <h3 class="question">暱稱 </h3>
+          <div class="input__area">
+            <input class="text" placeholder="您的回答" type="text">
+          </div>
+           <h4 class="error error__hide">請填寫本欄位</h4>
+        </div>
+
+        <div class="question__area required">
+          <h3 class="question">電子郵件 </h3>
+          <div class="input__area">
+            <input class="text" placeholder="您的電子郵件" type="email">
+          </div>
+           <h4 class="error error__hide">請填寫本欄位</h4>
+        </div>
+
+        <div class="question__area required">
+          <h3 class="question">手機號碼 </h3>
+          <div class="input__area">
+            <input class="text" placeholder="您的手機號碼" type="tel">
+          </div>
+           <h4 class="error error__hide">請填寫本欄位</h4>
+        </div>
+
+        <div class="question__area required">
+          <h3 class="question">報名類型 </h3>
+          <div class="options">
+            <label>
+              <input name="registerType" id="one" type="radio" class="radio" />
+              躺在床上用想像力實作
+            </label>
+          </div>
+          <div class="options">
+            <label>
+              <input name="registerType" id="two" type="radio" class="radio" />
+              趴在地上滑手機找現成的
+            </label>
+          </div>
+          <h4 class="error error__hide">請填寫本欄位</h4>
+        </div>
+        <div class="question__area required">
+          <h3 class="question">怎麼知道這個活動的？ </h3>
+          <div class="input__area">
+            <input class="text" placeholder="您的回答" type="text">
+          </div>
+           <h4 class="error error__hide">請填寫本欄位</h4>
+        </div>
+
+        <div class="question__area optional">
+          <h3 class="question">其他</h3>
+          <h3 class="question__info">對活動的一些建議</h4>
+            <div class="input__area">
+              <input class="text" placeholder="您的回答" type="text">
+            </div>
+          </div>
+
+        <button class="button__submit" type='submit'>提交</button>
+        <!-- <input type="submit" class="button__submit" value="Submit"> -->
+        <!-- 兩個都可以送出表單，只要 type 有設定成 submit 就行，擇一即可 -->
+        <h4 class="warning">請勿透過表單送出您的密碼。</h4>
+      </form>
+    </div>
+  </main>
+  <footer>
+    <h3 class="copyright">© 2020 © Copyright. All rights Reserved.</h3>
+  </footer>
+  <script src="./form.js"></script>
+</body>
+
+</html>
