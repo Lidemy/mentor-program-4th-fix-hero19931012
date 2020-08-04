@@ -314,7 +314,6 @@ section {
     justify-content: space-around;
   }
   .navbar__list li {
-    /* flex: 1; */
     margin-left: 0px;
     border-radius: 0px;
     text-align: center;

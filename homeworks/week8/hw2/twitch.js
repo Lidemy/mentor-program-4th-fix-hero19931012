@@ -111,13 +111,6 @@ function loadTopFiveGames() {
   };
 }
 
-// 點選 top 5 games 時更新下面的實況
-function refreshStreams(gameName) {
-  // 直接清空內容再呼叫 loadStreams 載入實況
-  streams.innerHTML = '';
-  loadStreams(gameName);
-}
-
 // 先取得 top 5 games，然後載入 top 1 的實況
 loadTopFiveGames();
 
@@ -126,7 +119,10 @@ const topFiveGames = document.querySelector('.top__five__games');
 topFiveGames.addEventListener('click', (e) => {
   const gameName = e.target.innerText;
   curretGame.innerText = gameName;
-  refreshStreams(gameName);
+
+  // 直接清空內容再呼叫 loadStreams 載入實況，因為沒有內容所以 offset 也會歸零
+  streams.innerHTML = '';
+  loadStreams(gameName);
 });
 
 // 載入更多，在現有實況下方再多加 20 個實況
