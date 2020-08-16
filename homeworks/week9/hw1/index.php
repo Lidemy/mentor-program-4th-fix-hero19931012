@@ -39,16 +39,16 @@ $username = '';
         <textarea name="content" id="" rows="5" class="comment_input_area" requied></textarea>
 
         <?php
-        if (!empty($_GET['errCode'])) {
-          if ($_GET['errCode'] === '1') {
-        ?>
-            <h4 class="errMsg">請填寫內容</h3>
-          <?php
-          }
-        }
+          if (!empty($_GET['errCode'])) {
+            if ($_GET['errCode'] === '1') {
           ?>
+              <h4 class="errMsg">請填寫內容</h3>
+            <?php
+            }
+          }
+        ?>
 
-          <input class="board_btn" type="submit" value="Submit">
+        <input class="board_btn" type="submit" value="Submit">
       </form>
     <?php } ?>
 
@@ -57,19 +57,17 @@ $username = '';
     <section class="comment_list">
 
       <?php
-      $sql = sprintf('SELECT * FROM huiming_comments ORDER BY ID DESC');
-      $result = $conn->query($sql);
-      if (!empty($result)) {
-        while ($row = $result->fetch_assoc()) {
-          $nickname = $row['nickname'];
-          $content = $row['content'];
-          $created_at = $row['created_at'];
+        $sql = sprintf('SELECT * FROM huiming_comments ORDER BY ID DESC');
+        $result = $conn->query($sql);
+        if ($result->num_rows !== '0') {
+          while ($row = $result->fetch_assoc()) {
+            $nickname = $row['nickname'];
+            $content = $row['content'];
+            $created_at = $row['created_at'];
           ?>
           <div class="comment">
             <div class="comment_avatar"></div>
-            <div class="comment_content">
-              <span class="nickname"><?php echo $nickname; ?></span>
-              <span class="created_time"><?php echo $created_at; ?></span>
+            <div class="comment_content"><span class="nickname"><?php echo $nickname; ?></span><span class="created_time"><?php echo $created_at; ?></span>
               <p class="content"><?php echo $content; ?></p>
             </div>
           </div>
