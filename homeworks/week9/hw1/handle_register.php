@@ -15,7 +15,7 @@ $nickname = $_POST['nickname'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$sql = sprintf('INSERT INTO users(nickname, username, password) VALUES ("%s", "%s", "%s")', 
+$sql = sprintf('INSERT INTO huiming_users(nickname, username, password) VALUES ("%s", "%s", "%s")', 
   $nickname,
   $username,
   $password

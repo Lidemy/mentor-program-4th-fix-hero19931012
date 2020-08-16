@@ -12,12 +12,12 @@ if (empty($_POST['content']))
 $content = $_POST['content'];
 $username = $_SESSION['username'];
 
-$sql_nickname = sprintf('select nickname from users where username="%s"', 
+$sql_nickname = sprintf('select nickname from huiming_users where username="%s"', 
   $username
 );
 $nickname = $conn->query($sql_nickname)->fetch_assoc()['nickname'];
 
-$sql = sprintf('INSERT INTO comments(nickname, content) VALUES ("%s", "%s")', 
+$sql = sprintf('INSERT INTO huiming_comments(nickname, content) VALUES ("%s", "%s")', 
   $nickname,
   $content
 );
