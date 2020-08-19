@@ -1,0 +1,133 @@
+html, body {
+  height: 100%;
+  background: #eee;
+}
+
+header {
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+  background: #0abab5;
+}
+
+header .warning {
+  margin: 0;
+}
+
+main {
+  margin: 20px auto;
+  max-width: 600px;
+  padding: 20px 40px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 10p spanx;
+  display: inline-block;
+  width: 600px;
+}
+
+main form span {
+  margin: 10px 0;
+  width: 100px;
+  font-weight: 600;
+  color: #555;
+  display: inline-block;
+}
+
+main input {
+  margin: 10px 0;
+  color: #555;
+}
+
+main input[type=submit] {
+  margin-top: 20px;
+}
+
+.notice {
+  color: #555;
+}
+
+.board_title {
+  margin: 20px 0;
+  color: #555;
+}
+
+.board_btn {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+  border: 1px solid #0abab5;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px;
+  background: #fff;
+  color: #0abab5;
+  font-weight: bold;
+  text-decoration:none;
+  transition: all 0.2s;
+}
+
+.board_btn:hover {
+  background: #0abab5;
+  color: #fff;
+}
+.board_btn:active {
+  transform: scale(1.03);
+}
+
+main .comment_input_area {
+  display: block;
+  width: 100%;
+
+}
+
+.errMsg {
+  margin: 10px 0;
+  color: red;
+  font-weight: bold;
+}
+
+hr {
+  margin: 20px 0;
+  height: 3px;
+  width: 100%;
+  background-color: #555;
+}
+
+.comment {
+  margin: 10px 0;
+  display: flex;
+}
+
+.comment_avatar {
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+  background: #0abab5;
+  opacity: 0.5;
+  border-radius: 50%;
+}
+
+.comment_content {
+  margin-left: 10px;
+  color: #555;
+  white-space: pre-line;
+}
+
+.nickname {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0abab5;
+}
+
+.created_time {
+  display: inline-block;
+  margin-left: 10px;
+  color: #999;
+  font-size: 14px;
+}
+
+.content {
+  margin-top: 10px;
+  line-height: 24px;
+  font-size: 16px;
+}
