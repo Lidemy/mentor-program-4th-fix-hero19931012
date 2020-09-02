@@ -1,0 +1,252 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  background: #eee;
+}
+
+header {
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+  background: #0abab5;
+}
+
+h3 {
+  color: #555;
+}
+
+.update__nickname__btn {
+  color: #555;
+  opacity: .3;
+  cursor: pointer;
+  transition: opacity .2s;
+}
+
+.update__nickname__btn:hover, .update__nickname__btn:hover+span {
+  opacity: .8;
+}
+
+.update__nickname__btn+span {
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.update__comment__btn, .delete__comment__btn, .update__authority__btn, .authority__save {
+  color: #555;
+  opacity: .3;
+  transition: opacity .2s;
+}
+
+.update__comment__btn:hover, .delete__comment__btn:hover, .update__authority__btn:hover, .authority__save:hover {
+  opacity: .8;
+}
+
+header .warning {
+  margin: 0;
+}
+
+main {
+  margin: 20px auto;
+  width: 600px;
+  max-width: 600px;
+  padding: 20px 40px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 5px 3px rgba(0, 0, 0, 0.1);
+}
+
+main form span {
+  margin: 10px 0;
+  width: 100px;
+  font-weight: 600;
+  color: #555;
+  display: inline-block;
+}
+
+.welcome {
+  display: inline-block;
+  margin: 20px 0 0;
+  color: #555;
+}
+
+.update__nickname {
+  display: inline-block;
+  position: relative;
+  margin-top: 10px;
+  font-weight: 600;
+  color: #555;
+}
+
+.update__nickname * {
+  vertical-align: bottom;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.update__nickname__btn+span {
+  position: relative;
+  left: 5px;
+}
+
+.update__nickname .board__btn {
+  margin: 0;
+}
+
+.board__title {
+  margin: 20px 0;
+  color: #555;
+}
+
+.notice {
+  color: #555;
+}
+
+.board__btn {
+  display: inline-block;
+  margin: 20px 10px 0 0;
+  border: 1px solid #0abab5;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px;
+  background: #fff;
+  color: #0abab5;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all .2s;
+}
+
+.board__btn:hover {
+  background: #0abab5;
+  color: #fff;
+}
+
+.clickable:active {
+  transform: scale(0.96);
+}
+
+main .comment_input_area {
+  display: block;
+  width: 100%;
+  resize: vertical;
+}
+
+hr {
+  margin: 25px 0;
+  height: 1px;
+  width: 100%;
+  background-color: #555;
+}
+
+.comment {
+  position: relative;
+  display: flex;
+  margin: 10px 0;
+}
+
+.comment_avatar {
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+  background: #0abab5;
+  opacity: .5;
+  border-radius: 50%;
+}
+
+.comment_content {
+  margin-left: 10px;
+  color: #555;
+}
+
+.nickname {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0abab5;
+}
+
+.created_time {
+  color: #999;
+  font-size: 14px;
+}
+
+.content {
+  margin-top: 10px;
+  line-height: 24px;
+  font-size: 16px;
+  white-space: pre-line;
+  word-break: break-all;
+}
+
+.comment__control__btn {
+  position: absolute;
+  right: 0;
+}
+
+.update__comment, .delete__comment {
+  position: relative;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.update__comment__btn+span, .delete__comment__btn+span {
+  position: absolute;
+  display: inline-block;
+  top: -25px;
+}
+
+.pages__area {
+  text-align: center;
+}
+
+.small__btn {
+  padding: 0 10px;
+  margin: 0;
+  font-size: 14px;
+  height: 25px;
+  line-height: 24px;
+}
+
+.current__page {
+  display: inline-block;
+  margin: 0 10px;
+  color: #555;
+  letter-spacing: 2px;
+}
+
+.errMsg {
+  display: block;
+  margin-top: 10px;
+  color: red;
+  font-weight: 700;
+}
+
+.hidden {
+  display: none;
+}
+
+a.clickable i {
+  color: #0abab5;
+  opacity: 1;
+}
+
+a.clickable:hover i {
+  color: #fff;
+}
+
+.user__table {
+  table-layout: auto;
+  width: 100%;
+  line-height: 24px;
+}
+
+.user__info__title {
+  color: rgba(10, 186, 181);
+  font-weight: bold;
+}
+
+.user__info {
+  color: #555;
+}
