@@ -1,0 +1,46 @@
+.container {
+  max-width: 500px;
+}
+
+h1 {
+  font-size: 60px;
+}
+
+label {
+  margin: 0;
+}
+
+label,
+label input[type=checkbox] {
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+  margin-right: 10px;
+  width: 15px;
+  height: 15px;
+}
+
+label input[type=checkbox]:checked+span {
+  opacity: 0.5;
+}
+
+.btn-cancel:focus {
+  outline: none;
+  border: none;
+  color: #212529;
+}
+
+i.fas {
+  color: #495057;
+  cursor: pointer;
+}
+
+.buttons {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+}
