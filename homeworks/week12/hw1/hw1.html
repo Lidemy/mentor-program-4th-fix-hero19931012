@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 12 留言板</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+  <script>
+    function htmlEscape(str) {
+      return "".concat(str)
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    function addCommentToDOM(container, comment, isPrepend) {
+      const html = `
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">${htmlEscape(comment.nickname)}</h5>
+            <p class="card-text">${htmlEscape(comment.content)}</p>
+          </div>
+        </div>`;
+
+      if (isPrepend) {
+        container.prepend(html)
+      } else {
+        container.append(html)
+      }
+    }
+
+    $(document).ready(() => {
+      const commentsDOM = $('.comments')
+      let offset = 5
+      $.ajax({
+        url: "api_comments.php?site_key=huiming",
+        success: (data) => {
+          if (!data.ok) {
+            alert(data.message)
+          }
+
+          const comments = data.comments
+          for (comment of comments) {
+            addCommentToDOM($('.comments'), comment, false)
+          }
+          if (comments.length < 5) {
+            $('.btn-load-more').hide()
+          }
+        }
+      })
+
+      $('.add-comment-form').submit((e) => {
+        e.preventDefault()
+        const commentData = {
+          'site_key': 'huiming',
+          'nickname': $('input[name=nickname').val(),
+          'content': $('textarea[name=content]').val(),
+        }
+        $.ajax({
+          type: 'POST',
+          url: 'api_add_comment.php',
+          data: commentData,
+          success: (data) => {
+            if (!data.ok) {
+              alert(data.message)
+              return
+            }
+            addCommentToDOM(commentsDOM, commentData, true)
+            $('input[name=nickname').val('')
+            $('textarea[name=content]').val('')
+          }
+        })
+      })
+
+      $('.load-more-form').submit((e) => {
+        e.preventDefault()
+        $.ajax({
+          url: `api_comments.php?site_key=huiming&offset=${offset}`,
+          success: (data) => {
+            offset += 5
+            if (!data.ok) {
+              alert(data.message)
+            }
+            const comments = data.comments
+            for (comment of comments) {
+              addCommentToDOM($('.comments'), comment, false)
+            }
+            if (comments.length < 5) {
+              $('.btn-load-more').hide()
+            }
+          }
+        })
+      })
+    })
+
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <form class="add-comment-form mt-5">
+      <div class="form-group">
+        <label for="nickname">暱稱</label>
+        <input name="nickname" type="text" class="form-control" id="exampleInputEmail1">
+      </div>
+      <div class="form-group">
+        <label for="content-textarea">留言內容</label>
+        <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div class="comments mt-3">
+    </div>
+    <form class="load-more-form mt-3 mb-5">
+      <button type="submit" class="btn btn-primary btn-load-more">載入更多</button>
+  </div>
+  </div>
+</body>
+
+</html>
