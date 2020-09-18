@@ -2,9 +2,11 @@
 
 
 ## 什麼是資料庫的 lock？為什麼我們需要 lock？
-
+確保資料的順序性
 
 ## NoSQL 跟 SQL 的差別在哪裡？
-
+Not only SQL > 非關連式，直存 json
 
 ## 資料庫的 ACID 是什麼？
+Transaction 的 4 個特性
+Consistency 一致性
