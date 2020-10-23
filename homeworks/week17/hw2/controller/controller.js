@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-undef */
 /* eslint-disable object-curly-newline */
@@ -5,7 +6,7 @@
 /* eslint-disable arrow-parens */
 const db = require('../models');
 
-const Price = db;
+const { Price } = db;
 
 function weightedRandom(items, itemsWeight) {
   const totalWeight = 100;
@@ -13,11 +14,9 @@ function weightedRandom(items, itemsWeight) {
   for (let i = 0; i < items.length; i++) {
     for (let j = 0; j < itemsWeight[i]; j++) {
       randomArray.push(i);
-      // items index
     }
   }
   const randomNumber = Math.floor(Math.random() * totalWeight);
-  // console.log(randomArray);
   console.log('price:', items[randomArray[randomNumber]]);
   return items[randomArray[randomNumber]];
 }
@@ -26,7 +25,6 @@ const priceController = {
   index: (req, res) => {
     Price.findAll()
       .then((prices) => {
-        // console.log('prices', JSON.stringify(prices, null, 4));
         res.render('index', {
           prices,
         });
@@ -52,7 +50,6 @@ const priceController = {
       probability,
       imageUrl,
     }).then(() => {
-      console.log('Price added!');
       res.redirect('/');
     }).catch(err => {
       console.log(err);
@@ -82,7 +79,7 @@ const priceController = {
         id: req.params.id,
       },
     }).then((price) => {
-      price.update({
+      return price.update({
         number,
         content,
         probability,
@@ -128,9 +125,9 @@ const priceController = {
           },
         }).then((price) => {
           res.status(200).json(price);
-        }).catch(() => {
+        }).catch((err) => {
           res.status(400).json({
-            err: 'something wrong',
+            err,
           });
         });
       }
@@ -146,7 +143,7 @@ const priceController = {
         id: req.params.id,
       },
     }).then((price) => {
-      price.update({
+      return price.update({
         is_deleted: 1,
       });
     }).then(() => {

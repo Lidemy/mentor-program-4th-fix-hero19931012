@@ -5,8 +5,8 @@ const saltRounds = 10;
 const bcrypt = require('bcrypt');
 const db = require('../models');
 
-const User = db;
-const Post = db;
+const { User } = db;
+const { Post } = db;
 
 const blogController = {
   index: (req, res) => {
@@ -150,7 +150,7 @@ const blogController = {
         id: req.params.id,
       },
     }).then((post) => {
-      post.update({
+      return post.update({
         title,
         content,
       });
@@ -194,8 +194,7 @@ const blogController = {
         id: req.params.id,
       },
     }).then((post) => {
-      console.log(JSON.stringify(post, null, 4));
-      post.update({
+      return post.update({
         is_deleted: 1,
       });
     }).then(() => {

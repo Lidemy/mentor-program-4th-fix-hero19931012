@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
@@ -50,5 +49,5 @@ app.post('/add', blogController.handleAdd);
 app.get('/delete/:id', blogController.delete);
 
 app.listen(port, () => {
-  console.log(`Listening on port: ${port}!`);
+  console.log(`Listening on port:${port}!`);
 });

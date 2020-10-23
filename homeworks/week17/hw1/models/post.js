@@ -1,5 +1,6 @@
 /* eslint-disable */
 'use strict';
+
 const {
   Model
 } = require('sequelize');

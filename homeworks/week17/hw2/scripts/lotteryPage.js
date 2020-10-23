@@ -39,7 +39,8 @@ button.addEventListener('click', () => {
       } else {
         sectionLottery.style.background = 'black';
       }
-      content = json;
+      // eslint-disable-next-line prefer-destructuring
+      content = json.content;
       prizeResult.classList.remove('hide');
       prizeResult.innerText = content;
     } else {
