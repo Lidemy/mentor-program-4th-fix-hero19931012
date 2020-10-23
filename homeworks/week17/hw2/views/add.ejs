@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add</title>
+  <%- include('template/header')%>
+</head>
+
+<body>
+  <div class="container mt-3">
+    <form action="/add" method="POST" class="mt-3">
+      <h3>新增獎品</h3>
+      <div class="mt-3" >獎品序號：<input type="number" min="0" step="1" name="number"></input></div>
+      <div class="mt-3" >獎品內容：<input type="text" name="content"></input></div>
+      <div class="mt-3" >中獎機率：<input type="number" min="0" step="1" name="probability"></input></div>
+      <div class="mt-3" >圖片網址：<input type="text" name="imageUrl"></div>
+      <p class="errorMsg mt-3"><%= errorMsg %></p>
+      <button type="submit" class="btn btn-dark btn-sm mt-3 price_editButton">新增</button>
+    </form>
+  </div>
+</body>
+
+</html>

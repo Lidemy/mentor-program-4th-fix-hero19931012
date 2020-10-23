@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include('template/header') %>
+</head>
+
+<body>
+  <%- include('template/nav') %>
+  <div class="container-wrapper">
+    <div class="container">
+      <div class="list-posts">
+
+        <% posts.forEach((post) => { 
+          if (typeof(post.is_deleted) !== 'number') { %>
+        <div class="list-post">
+          <a class="list-post__title" href="/post/<%= post.id %>">
+            <%= post.title %>
+          </a>
+          <div class="list-post__right">
+            <div class="list-post__info">
+              <div class="list-post__created-at">
+                <%= post.createdAt.toString().split(' G')[0] %>
+              </div>
+            </div>
+            <div class="list-post__actions">
+              <% if (username) {%>
+              <a class="list-post__btn" href="/edit/<%= post.id %>">編輯</a>
+              <a class="list-post__btn" href="/delete/<%= post.id %>">刪除</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <% }}) %>
+
+      </div>
+    </div>
+  </div>
+  <footer>Copyright © 2020 Who's Blog All Rights Reserved.</footer>
+</body>
+
+</html>
