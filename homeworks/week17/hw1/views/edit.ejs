@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include('template/header') %>
+</head>
+
+<body>
+  <%- include('template/nav') %>
+  <div class="container-wrapper">
+    <div class="container">
+      <div class="edit-post">
+        <form action="/edit/<%= post.id %>" method="POST">
+          <div class="edit-post__title">
+            編輯文章
+          </div>
+          <div class="edit-post__input-wrapper">
+            <input name="title" class="edit-post__input" value="<%= post.title %>">
+          </div>
+          <div class="edit-post__input-wrapper">
+            <textarea rows="20" name="content"
+              class="edit-post__content"><%= post.content %></textarea>
+          </div>
+          <div class="edit-post__btn-wrapper">
+            <h2 class="errMsg"><%= errorMsg %></h2>
+            <input type="submit" class="edit-post__btn" value="送出">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer>Copyright © 2020 Who's Blog All Rights Reserved.</footer>
+</body>
+
+</html>

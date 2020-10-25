@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lottery</title>
+  <%- include('template/header')%>
+</head>
+
+<body>
+  <div class="container mt-3">
+    <h3>獎品列表</h3>
+    <a href="/add"><button type="button" class="btn btn-info btn-sm ">新增獎品</button></a>
+    <a href="/lotteryPage"><button type="button" class="btn btn-success btn-sm ">抽獎頁面</button></a>
+    <div class="price__list mt-3">
+      <% prices.forEach((price) => {
+        if (typeof price.is_deleted !== 'number') { %>
+          <div class="price mb-3">
+            <div>獎品序號：<span class="price__id"><%= price.number %> </span></div>
+            <div>獎品內容：<span class="price__content"><%= price.content %></span></div>
+            <div>中獎機率：<span class="price__probability"><%= price.probability %>%</span></div>
+            <div>圖片網址：<span class="price__imageUrl"><%= price.imageUrl %></span>
+            </div>
+            <a href="/edit/<%= price.id %>"><button type="button" class="btn btn-dark btn-sm mt-3">編輯</button></a>
+            <a href="/delete/<%= price.id %>"><button type="button" class="btn btn-danger btn-sm mt-3">刪除</button></a>
+          </div>
+        <% }}) %>
+    </div>
+  </div>
+</body>
+
+</html>

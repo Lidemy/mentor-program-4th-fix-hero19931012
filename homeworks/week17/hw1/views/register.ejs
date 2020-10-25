@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include('template/header') %>
+</head>
+
+<body>
+  <%- include('template/nav') %>
+  <div class="login-wrapper">
+    <h2>Register</h2>
+    <form action="/register" method="POST">
+      <div class="input__wrapper">
+        <div class="input__label">USERNAME</div>
+        <input class="input__field" type="text" name="username" />
+      </div>
+
+      <div class="input__wrapper">
+        <div class="input__label">PASSWORD</div>
+        <input class="input__field" type="password" name="password" />
+      </div>
+      <p class="errMsg"><%= errorMsg %></p>
+      <input type='submit' value="Submit" />
+    </form>
+
+  </div>
+</body>
+
+</html>
