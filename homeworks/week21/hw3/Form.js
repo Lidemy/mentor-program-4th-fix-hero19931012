@@ -1,13 +1,16 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable import/no-unresolved */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable react/jsx-filename-extension */
-/* eslint-disable import/no-unresolved */
+import { useContext, createContext } from 'react';
 import styled from 'styled-components';
 import Color from './Constants';
+
+const HandlerContext = createContext();
+
 
 const OutterWrapper = styled.main`
   background-color: ${Color.background};
@@ -48,9 +51,7 @@ const FormNotice = styled.p`
 
 const FormHeader = () => (
   <div className="header">
-    <FormTitle>
-        新拖延運動報名表單
-    </FormTitle>
+    <FormTitle>新拖延運動報名表單</FormTitle>
     <FormInfo>
       <p>活動日期：2020/12/10 ~ 2020/12/11</p>
       <p>活動地點：台北市大安區新生南路二段1號</p>
@@ -76,9 +77,7 @@ const QuestionTitle = styled.h3`
   }
 `;
 
-const QuestionErrorMessage = styled.h4`
-  margin: 0px;
-  font-size: 14px;
+const ErrorMessage = styled.div`
   color: ${Color.textWarning};
 `;
 
@@ -96,12 +95,14 @@ const RadioOptions = styled.div`
   flex-direction: column;
 `;
 
-const Radio = ({ options, handleInput }) => {
-  const handleRadioClicked = (e) => {
-    handleInput(e, 'registerType');
-  };
+const Radio = ({ options }) => {
+  const [, handleRadioClick, indexOfAnswer] = useContext(HandlerContext);
+
   return (
-    <RadioOptions onChange={handleRadioClicked}>
+    <RadioOptions onChange={(e) => {
+      handleRadioClick(e, indexOfAnswer);
+    }}
+    >
       {
         options.map((option, index) => (
           <label key={index}>
@@ -114,29 +115,31 @@ const Radio = ({ options, handleInput }) => {
   );
 };
 
-const Question = ({ question, handleInput }) => (
-  <QuestionWrapper>
-    <QuestionTitle>
-      {question.title}
-    </QuestionTitle>
-    {
-        question.input.inputType === 'input' ? <Input placeholder={question.input.placeholder} onChange={handleInput} value={question.value} /> : ''
-      }
-    {
-        question.input.inputType === 'radio' ? (
-          <Radio
-            options={question.input.options}
-            handleInput={(e) => {
-              handleInput(e, question.title);
+const Question = ({ question, answers }) => {
+  const [handleInputChange, , index, errorMessages] = useContext(HandlerContext);
+  return (
+    <QuestionWrapper>
+      <QuestionTitle>
+        {question.title}
+      </QuestionTitle>
+      {
+        question.input.inputType === 'input' ? (
+          <Input
+            placeholder={question.input.placeholder}
+            onChange={(e) => {
+              handleInputChange(e, index);
             }}
+            value={answers[index].value}
           />
         ) : ''
       }
-    {
-        question.errorMessage.isShow ? <QuestionErrorMessage>{question.errorMessage.content}</QuestionErrorMessage> : ''
+      {
+        question.input.inputType === 'radio' ? <Radio options={question.input.options} /> : ''
       }
-  </QuestionWrapper>
-);
+      { errorMessages[index] && <ErrorMessage>{errorMessages[index]}</ErrorMessage>}
+    </QuestionWrapper>
+  );
+};
 
 
 const SubmitButton = styled.button`
@@ -148,8 +151,12 @@ const SubmitButton = styled.button`
   line-height: 40px;
   width: 92px;
   text-align: center;
-  font-size: 15px;
+  font-size: 14px;
   cursor: pointer;
+  
+  &:focus {
+    outline: none;
+  }
 `;
 
 const Warning = styled.h4`
@@ -158,9 +165,12 @@ const Warning = styled.h4`
 `;
 
 function Form({
-  questions,
-  handleInput,
+  answers,
+  questionList,
+  handleInputChange,
+  handleRadioClick,
   handleSubmit,
+  errorMessages,
 }) {
   return (
     <OutterWrapper>
@@ -169,26 +179,27 @@ function Form({
           <FormHeader />
           <FormQuestions>
             {
-              questions.map((question, index) => (
-                <Question
+              questionList.map((question, index) => (
+                <HandlerContext.Provider
                   key={index}
-                  question={question}
-                  handleInput={(e) => {
-                    handleInput(e, question.title);
-                  }}
-                />
+                  value={[
+                    handleInputChange,
+                    handleRadioClick,
+                    index,
+                    errorMessages,
+                  ]}
+                >
+                  <Question
+                    key={index}
+                    question={question}
+                    answers={answers}
+                  />
+                </HandlerContext.Provider>
               ))
             }
           </FormQuestions>
           <Warning>請勿透過表單送出您的密碼。</Warning>
-          <SubmitButton
-            type="submit"
-            onClick={(e) => {
-              handleSubmit(e);
-            }}
-          >
-提交
-          </SubmitButton>
+          <SubmitButton type="submit" onClick={handleSubmit}>提交</SubmitButton>
         </FormWrapper>
       </FormBody>
     </OutterWrapper>

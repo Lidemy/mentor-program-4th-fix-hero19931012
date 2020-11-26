@@ -6,12 +6,7 @@ const questionList = [
       dataType: 'text',
       placeholder: '您的暱稱',
     },
-    errorMessage: {
-      isShow: false,
-      content: '請填寫本欄位',
-    },
     isRequired: true,
-    value: '',
   },
   {
     title: '電子郵件',
@@ -20,12 +15,7 @@ const questionList = [
       dataType: 'email',
       placeholder: '您的電子郵件',
     },
-    errorMessage: {
-      isShow: false,
-      content: '請填寫本欄位',
-    },
     isRequired: true,
-    value: '',
   },
   {
     title: '手機號碼',
@@ -34,12 +24,7 @@ const questionList = [
       dataType: 'tel',
       placeholder: '您的手機號碼',
     },
-    errorMessage: {
-      isShow: false,
-      content: '請填寫本欄位',
-    },
     isRequired: true,
-    value: '',
   },
   {
     title: '報名類型',
@@ -58,12 +43,7 @@ const questionList = [
       ],
       placeholder: '您的電子郵件',
     },
-    errorMessage: {
-      isShow: false,
-      content: '請填寫本欄位',
-    },
     isRequired: true,
-    value: '',
   },
   {
     title: '怎麼知道這個活動的？',
@@ -72,12 +52,7 @@ const questionList = [
       dataType: 'text',
       placeholder: '您的回答',
     },
-    errorMessage: {
-      isShow: false,
-      content: '請填寫本欄位',
-    },
     isRequired: true,
-    value: '',
   },
   {
     title: '其他',
@@ -87,12 +62,7 @@ const questionList = [
       dataType: 'text',
       placeholder: '您的回答',
     },
-    errorMessage: {
-      isShow: false,
-      content: '請填寫本欄位',
-    },
     isRequired: false,
-    value: '',
   },
 ];
 

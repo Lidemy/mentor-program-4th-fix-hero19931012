@@ -1,5 +1,3 @@
-/* eslint-disable array-callback-return */
-/* eslint-disable consistent-return */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-alert */
@@ -8,80 +6,81 @@ import { useEffect, useState } from 'react';
 import Form from './Form';
 import questionList from './Questions';
 
-function showAnswers(questions) {
+function showAnswers(answers) {
   const result = [];
-  questions.forEach((question) => {
-    const { title, value } = question;
+  answers.forEach((answer) => {
+    const { title, value } = answer;
     result.push(`${title}：${value}`);
   });
   alert(`您的回答如下：\n\n${result.join('\n')}`);
 }
 
+const initialAnswers = [];
+const initialErrorMessages = [];
+
+questionList.forEach((question) => {
+  initialAnswers.push({
+    title: question.title,
+    value: '',
+  });
+  initialErrorMessages.push('');
+});
+
 
 function App() {
-  const [questions, setQuestions] = useState(questionList);
+  const [answers, setAnswers] = useState(initialAnswers);
+  const [errorMessages, setErrorMessages] = useState(initialErrorMessages);
 
-  const handleInput = (e, title) => {
-    let value;
-    setQuestions(questions.map((question) => {
-      if (question.title === title) {
-        // 單選題
-        if (question.input.inputType === 'radio') {
-          const checkedOption = e.target.parentElement.innerText;
-          const newQuestion = { ...question };
+  function hideErrorMessage(indexOfAnswer) {
+    const newErrorMessages = [...errorMessages];
+    newErrorMessages[indexOfAnswer] = '';
+    setErrorMessages(newErrorMessages);
+  }
 
-          newQuestion.input.options = question.input.options.map((option) => {
-            // 選出被選取的選項標記為為選取
-            if (option.content === checkedOption) {
-              return {
-                ...option,
-                isChecked: true,
-              };
-            }
-            // 其他的標為未選取
-            return {
-              ...option,
-              isChecked: false,
-            };
-          });
-
-          // 把被選取的值放到問題的回答
-          newQuestion.value = checkedOption;
-          return newQuestion;
-        }
-
-        // 簡答題
-        if (question.input.inputType === 'input') {
-          value = e.target;
-          return {
-            ...question,
-            value,
-          };
-        }
-      } else {
-        return question;
+  const handleInputChange = (e, indexOfAnswer) => {
+    hideErrorMessage(indexOfAnswer);
+    setAnswers(answers.map((answer, index) => {
+      if (index === indexOfAnswer) {
+        return {
+          ...answer,
+          value: e.target.value,
+        };
       }
+      return answer;
     }));
   };
+
+  function handleRadioClick(e, indexOfAnswer) {
+    hideErrorMessage(indexOfAnswer);
+    setAnswers(answers.map((answer, index) => {
+      if (index === indexOfAnswer) {
+        return {
+          ...answer,
+          value: e.target.parentElement.innerText,
+        };
+      }
+      return answer;
+    }));
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let isCompleted = true;
 
-    setQuestions(questions.map((question) => {
-      if (question.value === '') {
+    const newErrorMessages = [];
+    answers.forEach((answer, indexOfAnswer) => {
+      if (answer.value === '') {
         isCompleted = false;
-        const newQuestion = { ...question };
-        newQuestion.errorMessage.isShow = true;
-        return newQuestion;
+        newErrorMessages[indexOfAnswer] = '請輸入欄位';
+      } else {
+        newErrorMessages[indexOfAnswer] = '';
       }
-      const newQuestion = { ...question };
-      newQuestion.errorMessage.isShow = false;
-      return newQuestion;
-    }));
+    });
+
+    setErrorMessages(newErrorMessages);
 
     if (isCompleted) {
-      showAnswers(questions);
+      showAnswers(answers);
     }
   };
 
@@ -91,9 +90,12 @@ function App() {
 
   return (
     <Form
-      questions={questions}
-      handleInput={handleInput}
+      answers={answers}
+      questionList={questionList}
+      handleInputChange={handleInputChange}
+      handleRadioClick={handleRadioClick}
       handleSubmit={handleSubmit}
+      errorMessages={errorMessages}
     />
   );
 }
