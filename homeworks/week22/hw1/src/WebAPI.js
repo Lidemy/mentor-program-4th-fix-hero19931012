@@ -17,9 +17,9 @@ export function register({ username, nickname, password }) {
     .then(res => res.json());
 }
 
-export function getPosts() {
-  return fetch(`${BASE_URL}/posts?_sort=createdAt&_order=desc`)
-    .then(res => res.json());
+export function getPosts(offset) {
+  return fetch(`${BASE_URL}/posts?_sort=createdAt&_order=desc&_start=${offset}&_end=${offset + 5}`)
+    .then(res => res);
 }
 
 export function getPost(id) {
